@@ -3,11 +3,9 @@ var http = require('http');
 
 var app = express();
 
-app.configure(function() {
-	app.set('port', process.env.PORT || 3000);
-	app.use(express.json());
-	app.use(express.urlencoded());
-});
+app.set('port', process.env.PORT || 3000);
+app.use(express.json());
+app.use(express.urlencoded());
 
 //default route
 app.get("/", function(req, res) {
@@ -28,7 +26,7 @@ app.get("/hi", function(req, res) {
 app.post("/users", function(req, res) {
 	res.send("Creating a new user with the name " + req.body.username + ".");
 });
-
+// app.get("/users/:userId", function(req, res) {
 app.get(/\/users\/(\d*)\/?(edit)?/, function(req, res) {
 	// /users/10
 	// /users/10/
