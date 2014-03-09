@@ -4,12 +4,18 @@ var http = require('http');
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+//app.set('view cache', true); or app.enable("view cache");
+
+//middleware
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.static(__dirname + "/public"));
 
 //default route
 app.get("/", function(req, res) {
-	res.render("home.jade", {title:"Having Fun With Express; something else"});
+	res.render("home", {title:"Having Fun With Express; something else"});
 });
 
 app.get("/hi", function(req, res) {
