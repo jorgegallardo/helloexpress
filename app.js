@@ -9,7 +9,7 @@ app.use(express.urlencoded());
 
 //default route
 app.get("/", function(req, res) {
-	res.send("Hello, Express!");
+	res.render("home.jade", {title:"Buildling Web Apps in Node with Express"});
 });
 
 app.get("/hi", function(req, res) {
@@ -26,11 +26,16 @@ app.get("/hi", function(req, res) {
 app.post("/users", function(req, res) {
 	res.send("Creating a new user with the name " + req.body.username + ".");
 });
+//app.put /users/:userId
+//app.delete /users/:userId
+
 // app.get("/users/:userId", function(req, res) {
 app.get(/\/users\/(\d*)\/?(edit)?/, function(req, res) {
+	// this can accept these different routes:
 	// /users/10
 	// /users/10/
 	// /users/10/edit
+	// looks like the ? means things are optional
 	var message = "user #" + req.params[0] + "'s profile";
 	if(req.params[1] === 'edit') {
 		message = "Editing " + message;
