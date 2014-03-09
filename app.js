@@ -9,7 +9,7 @@ app.use(express.urlencoded());
 
 //default route
 app.get("/", function(req, res) {
-	res.render("home.jade", {title:"Buildling Web Apps in Node with Express"});
+	res.render("home.jade", {title:"Having Fun With Express; something else"});
 });
 
 app.get("/hi", function(req, res) {
